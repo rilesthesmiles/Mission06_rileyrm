@@ -11,19 +11,19 @@ namespace Mission06_rileyrm.Models
         [Key]
         [Required]
         public int MovieForumID { get; set; }
-        [Required(ErrorMessage = "Thes field is required.")]
+        [Required(ErrorMessage = "The Category field is required.")]
         public string Category { get; set; }
 
-        [Required(ErrorMessage = "Thes field is required.")]
+        [Required(ErrorMessage = "The Title field is required.")]
         public string Title { get; set; }
 
-        [Required(ErrorMessage = "Thes field is required.")]
+        [Required(ErrorMessage = "The Year field is required.")]
         public int Year { get; set; }
 
-        [Required(ErrorMessage = "Thes field is required.")]
+        [Required(ErrorMessage = "The Director field is required.")]
         public string Director { get; set; }
 
-        [Required(ErrorMessage = "Thes field is required.")]
+        [Required(ErrorMessage = "The Rating field is required.")]
         public string Rating { get; set; }
         public bool Edited { get; set; }
         public string LentTo { get; set; }

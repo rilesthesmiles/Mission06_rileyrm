@@ -36,9 +36,17 @@ namespace Mission06_rileyrm.Controllers
         [HttpPost]
         public IActionResult MovieForum(MovieForumResponse ar)
         {
-            blahContext.Add(ar);
-            blahContext.SaveChanges();
-            return View("Confirmation", ar);
+            if (ModelState.IsValid)
+            {
+                blahContext.Add(ar);
+                blahContext.SaveChanges();
+                return View("Confirmation", ar);
+
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult Privacy()
