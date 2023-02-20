@@ -51,7 +51,9 @@ namespace Mission06_rileyrm.Controllers
         [HttpGet]
         public IActionResult ViewMovies()
         {
-            var applications = mrContext.responses.ToList();
+            var applications = mrContext.responses
+                .OrderBy(x => x.Title)
+                .ToList();
             return View(applications);
         }
 
