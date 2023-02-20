@@ -12,9 +12,9 @@ namespace Mission06_rileyrm.Models
         [Required]
         public int MovieForumID { get; set; }
         [Required(ErrorMessage = "The Category field is required.")]
-        public string Category { get; set; }
+        
 
-        [Required(ErrorMessage = "The Title field is required.")]
+    
         public string Title { get; set; }
 
         [Required(ErrorMessage = "The Year field is required.")]
@@ -30,5 +30,10 @@ namespace Mission06_rileyrm.Models
 
         [MaxLength(25)]
         public string Notes { get; set; }
+
+
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
+
     }
 }

@@ -14,13 +14,26 @@ namespace Mission06_rileyrm.Models
         }
 
         public DbSet<MovieForumResponse> responses { get; set; }
+        public DbSet<Category> categories { get; set; }
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<Category>().HasData(
+                new Category { CategoryID = 1, CategoryName = "Superhero"},
+                new Category { CategoryID = 2, CategoryName = "Action" },
+                new Category { CategoryID = 3, CategoryName = "Comedy" },
+                new Category { CategoryID = 4, CategoryName = "Drama" },
+                new Category { CategoryID = 5, CategoryName = "Horror" },
+                new Category { CategoryID = 6, CategoryName = "Documentary" },
+                new Category { CategoryID = 7, CategoryName = "Romantic" },
+                new Category { CategoryID = 8, CategoryName = "Thriller" }
+                );
+
+
             mb.Entity<MovieForumResponse>().HasData(
                 new MovieForumResponse
                 {
                     MovieForumID = 1,
-                    Category = "Superhero",
+                    CategoryID = 1,
                     Title = "Logan",
                     Year = 2017,
                     Director = "James Mangold",
@@ -32,7 +45,7 @@ namespace Mission06_rileyrm.Models
                 new MovieForumResponse
                 {
                     MovieForumID = 2,
-                    Category = "Superhero",
+                    CategoryID = 1,
                     Title = "Dark Knight",
                     Year = 2008,
                     Director = "Christopher Nolan",
@@ -44,7 +57,7 @@ namespace Mission06_rileyrm.Models
                 new MovieForumResponse
                 {
                     MovieForumID = 3,
-                    Category = "Action",
+                    CategoryID = 2,
                     Title = "Baby Driver",
                     Year = 2017,
                     Director = "Edgar Wright",
