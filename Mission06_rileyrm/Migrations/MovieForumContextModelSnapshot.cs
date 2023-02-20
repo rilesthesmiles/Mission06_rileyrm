@@ -15,15 +15,70 @@ namespace Mission06_rileyrm.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.32");
 
+            modelBuilder.Entity("Mission06_rileyrm.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryID");
+
+                    b.ToTable("categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryID = 1,
+                            CategoryName = "Superhero"
+                        },
+                        new
+                        {
+                            CategoryID = 2,
+                            CategoryName = "Action"
+                        },
+                        new
+                        {
+                            CategoryID = 3,
+                            CategoryName = "Comedy"
+                        },
+                        new
+                        {
+                            CategoryID = 4,
+                            CategoryName = "Drama"
+                        },
+                        new
+                        {
+                            CategoryID = 5,
+                            CategoryName = "Horror"
+                        },
+                        new
+                        {
+                            CategoryID = 6,
+                            CategoryName = "Documentary"
+                        },
+                        new
+                        {
+                            CategoryID = 7,
+                            CategoryName = "Romantic"
+                        },
+                        new
+                        {
+                            CategoryID = 8,
+                            CategoryName = "Thriller"
+                        });
+                });
+
             modelBuilder.Entity("Mission06_rileyrm.Models.MovieForumResponse", b =>
                 {
                     b.Property<int>("MovieForumID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -52,13 +107,15 @@ namespace Mission06_rileyrm.Migrations
 
                     b.HasKey("MovieForumID");
 
+                    b.HasIndex("CategoryID");
+
                     b.ToTable("responses");
 
                     b.HasData(
                         new
                         {
                             MovieForumID = 1,
-                            Category = "Superhero",
+                            CategoryID = 1,
                             Director = "James Mangold",
                             Edited = true,
                             LentTo = "none",
@@ -70,7 +127,7 @@ namespace Mission06_rileyrm.Migrations
                         new
                         {
                             MovieForumID = 2,
-                            Category = "Superhero",
+                            CategoryID = 1,
                             Director = "Christopher Nolan",
                             Edited = false,
                             LentTo = "none",
@@ -82,7 +139,7 @@ namespace Mission06_rileyrm.Migrations
                         new
                         {
                             MovieForumID = 3,
-                            Category = "Action",
+                            CategoryID = 2,
                             Director = "Edgar Wright",
                             Edited = true,
                             LentTo = "none",
@@ -91,6 +148,15 @@ namespace Mission06_rileyrm.Migrations
                             Title = "Baby Driver",
                             Year = 2017
                         });
+                });
+
+            modelBuilder.Entity("Mission06_rileyrm.Models.MovieForumResponse", b =>
+                {
+                    b.HasOne("Mission06_rileyrm.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

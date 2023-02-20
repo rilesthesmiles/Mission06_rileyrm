@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission06_rileyrm.Models;
 using System;
@@ -30,6 +31,9 @@ namespace Mission06_rileyrm.Controllers
         [HttpGet]
         public IActionResult MovieForum()
         {
+
+            ViewBag.Categories = mrContext.categories.ToList();
+
             return View();
         }
         [HttpPost]
@@ -52,6 +56,7 @@ namespace Mission06_rileyrm.Controllers
         public IActionResult ViewMovies()
         {
             var applications = mrContext.responses
+                .Include(x => x.Category)
                 .OrderBy(x => x.Title)
                 .ToList();
             return View(applications);
