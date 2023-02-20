@@ -28,6 +28,9 @@ namespace Mission06_rileyrm.Controllers
         {
             return View();
         }
+
+        //Movie forum functionality here
+
         [HttpGet]
         public IActionResult MovieForum()
         {
@@ -53,6 +56,8 @@ namespace Mission06_rileyrm.Controllers
             }
         }
 
+        //View the movies
+
         [HttpGet]
         public IActionResult ViewMovies()
         {
@@ -63,6 +68,9 @@ namespace Mission06_rileyrm.Controllers
             return View(applications);
         }
         
+
+        //These are the edit functions
+
         [HttpGet]
         public IActionResult Edit(int movieforumid)
         {
@@ -83,6 +91,9 @@ namespace Mission06_rileyrm.Controllers
 
             
         }
+
+
+        // These are the delete functions
 
         [HttpGet]
         public IActionResult Delete(int movieforumid)
