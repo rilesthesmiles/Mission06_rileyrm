@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "View Movies";
 }
+@model List<MovieForumResponse>
 
 <table class="table table-bordered table-dark">
     <thread>
@@ -18,4 +19,20 @@
             <td>Notes</td>
         </tr>
     </thread>
+
+    <tbody>
+        @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.Title</td>
+                    <td>@x.Category</td>
+                    <td>@x.Year</td>
+                    <td>@x.Director</td>
+                    <td>@x.Rating</td>
+                    <td>@x.Edited</td>
+                    <td>@x.LentTo</td>
+                    <td>@x.Notes</td>
+                </tr>
+            }
+    </tbody>
 </table>

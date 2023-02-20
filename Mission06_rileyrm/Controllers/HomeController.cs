@@ -12,11 +12,11 @@ namespace Mission06_rileyrm.Controllers
     public class HomeController : Controller
     {
 
-        private MovieForumContext blahContext { get; set; }
+        private MovieForumContext mrContext { get; set; }
 
         public HomeController( MovieForumContext someName)
         {
-            blahContext = someName;
+            mrContext = someName;
         }
 
         public IActionResult Index()
@@ -37,8 +37,8 @@ namespace Mission06_rileyrm.Controllers
         {
             if (ModelState.IsValid)
             {
-                blahContext.Add(ar);
-                blahContext.SaveChanges();
+                mrContext.Add(ar);
+                mrContext.SaveChanges();
                 return View("Confirmation", ar);
 
             }
@@ -48,9 +48,11 @@ namespace Mission06_rileyrm.Controllers
             }
         }
 
+        [HttpGet]
         public IActionResult ViewMovies()
         {
-            return View();
+            var applications = mrContext.responses.ToList();
+            return View(applications);
         }
 
         
