@@ -6,7 +6,7 @@
 }
 @model List<MovieForumResponse>
 
-<table class="table table-bordered table-dark table-striped">
+<table class="table table-bordered table-striped table-light">
     <thread class="font-weight-bolder">
         <tr>
             <td>Title</td>
@@ -32,6 +32,9 @@
                     <td>@x.Edited</td>
                     <td>@x.LentTo</td>
                     <td>@x.Notes</td>
+
+                    <td><a asp-controller="Home" asp-action="Edit" asp-route-movieforumid="@x.MovieForumID">Edit</a></td>
+                    <td><a asp-controller="Home" asp-action="Delete" asp-route-movieforumid="@x.MovieForumID">Delete</a></td>
                 </tr>
             }
     </tbody>
