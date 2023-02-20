@@ -11,12 +11,11 @@ namespace Mission06_rileyrm.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+
         private MovieForumContext blahContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger, MovieForumContext someName)
+        public HomeController( MovieForumContext someName)
         {
-            _logger = logger;
             blahContext = someName;
         }
 
@@ -49,15 +48,11 @@ namespace Mission06_rileyrm.Controllers
             }
         }
 
-        public IActionResult Privacy()
+        public IActionResult ViewMovies()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        
     }
 }
